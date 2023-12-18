@@ -65,7 +65,8 @@ function displayForecast() {
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
 
-  forecast.innerHTML = `
+  days.forEach(function (day) {
+    forecast.innerHTML = `
               <div class="column-2">
                 <div class="weather-forecast-date">Tue</div>
                 <div class="weather-forecast-icon">🌧️</div>
@@ -75,4 +76,5 @@ function displayForecast() {
                 </div>
               </div>
             </div>`;
+  });
 }
