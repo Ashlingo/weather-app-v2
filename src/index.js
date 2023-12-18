@@ -60,8 +60,8 @@ let currentDate = new Date();
 
 currentDateELement.innerHTML = formatDate(currentDate);
 
-function displayForecast() {
-  let forecast = document.querySelector("#forecast");
+function displayForecast(response) {
+  console.log(response.data);
 
   let days = ["Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
   let forecastHtml = "";
@@ -80,11 +80,13 @@ function displayForecast() {
               </div>
             </div>`;
   });
+  let forecast = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 displayForecast();
 
 function getForecast(city) {
   let apiKey = "212td4388440o578fdad3f32927598ab";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios(apiUrl).then(displayForecast);
 }
