@@ -66,12 +66,13 @@ function displayForecast(response) {
 
   let forecastHtml = "";
 
-  response.data.daily.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
               <div class="column-2">
-                <div class="weather-forecast-date">${day}</div>
+                <div class="weather-forecast-date">${day.time}</div>
                 <img src = "${
                   day.condition.icon_url
                 }" class="weather-forecast-icon" />
@@ -85,6 +86,7 @@ function displayForecast(response) {
                 </div>
               </div>
             </div>`;
+    }
   });
   let forecast = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
@@ -95,4 +97,10 @@ function getForecast(city) {
   let apiKey = "212td4388440o578fdad3f32927598ab";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
   axios(apiUrl).then(displayForecast);
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
 }
