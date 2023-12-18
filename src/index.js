@@ -64,19 +64,24 @@ currentDateELement.innerHTML = formatDate(currentDate);
 function displayForecast(response) {
   console.log(response.data);
 
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day) {
     forecastHtml =
       forecastHtml +
       `
               <div class="column-2">
                 <div class="weather-forecast-date">${day}</div>
-                <div class="weather-forecast-icon">🌧️</div>
+                <img src = "${
+                  day.condition.icon_url
+                }" class="weather-forecast-icon" />
                 <div class="weather-forecast-temperatures">
-                  <span class="weather-forecast-max"><strong>10°</strong></span>
-                  <span class="weather-forecast-min">8°</span>
+                  <span class="weather-forecast-max"><strong>${Math.round(
+                    day.temperature.maximum
+                  )}°</strong></span>
+                  <span class="weather-forecast-min">${Math.round(
+                    day.temperature.minimum
+                  )}°</span>
                 </div>
               </div>
             </div>`;
