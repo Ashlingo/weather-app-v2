@@ -83,3 +83,8 @@ function displayForecast() {
   forecastElement.innerHTML = forecastHtml;
 }
 displayForecast();
+
+function getForecast(city) {
+  let apiKey = "212td4388440o578fdad3f32927598ab";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
+}
