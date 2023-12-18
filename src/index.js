@@ -62,8 +62,6 @@ let currentDate = new Date();
 currentDateELement.innerHTML = formatDate(currentDate);
 
 function displayForecast(response) {
-  console.log(response.data);
-
   let forecastHtml = "";
 
   response.data.daily.forEach(function (day, index) {
@@ -72,7 +70,7 @@ function displayForecast(response) {
         forecastHtml +
         `
               <div class="column-2">
-                <div class="weather-forecast-date">${day.time}</div>
+                <div class="weather-forecast-date">${formatDay(day.time)}</div>
                 <img src = "${
                   day.condition.icon_url
                 }" class="weather-forecast-icon" />
