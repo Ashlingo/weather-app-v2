@@ -62,9 +62,12 @@ currentDateELement.innerHTML = formatDate(currentDate);
 
 function displayForecast() {
   let forecast = document.querySelector("#forecast");
+
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+
   forecast.innerHTML = `
               <div class="column-2">
-                <div class="weather-forecast-date">Mon</div>
+                <div class="weather-forecast-date">Tue</div>
                 <div class="weather-forecast-icon">🌧️</div>
                 <div class="weather-forecast-temperatures">
                   <span class="weather-forecast-max"><strong>10°</strong></span>
